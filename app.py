@@ -271,7 +271,7 @@ st.markdown(""" ### 📝 Final Thoughts
 *   **Planning is Key:** Retirement requires a balance of saving discipline and realistic spending.
 *   **No Moonshots Needed:** You don't need risky bets to retire comfortably; you need consistency and time.
 
-**Disclaimer:** these models are simplified and do not account for taxes, fees, or changing market conditions. Future performance might be radically different from the past and hence the numbers we are using might not be representative. I have used for the examples typical numbers considered in inflation-adjusted scenarios (otherwise also salary should grow with inflation). But it is easy to play with the numbers to simulate inflation and variability in returns, the effect of promotions, and a draw a lot of interesting conclusions. See what happens if you have a market crash at the beginning or at the end of your investing life.
+**Disclaimer:** these models are simplified and, among other things, do not account for taxes, fees, or changing market conditions. Future performance might be radically different from the past and hence the numbers we are using might not be representative. I have used for the examples typical numbers considered in inflation-adjusted scenarios (otherwise also salary should grow with inflation). But it is easy to play with the numbers to simulate inflation and variability in returns, the effect of promotions, and a draw a lot of interesting conclusions from this simple model. See what happens if you have a market crash at the beginning or at the end of your investing life.
 """)
 st.info("If you want to learn more, and you liked this app, contact me and ask to make more! :)")
 
