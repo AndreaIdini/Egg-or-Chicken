@@ -3,12 +3,12 @@ import pandas as pd
 import numpy as np
 
 # --- 1. SETUP THE PAGE ---
-# This configures the browser tab title and layout
-st.set_page_config(page_title="Chicken or Egg", layout="centered")
+# This configures the browser tab title and layout if standalone
+# st.set_page_config(page_title="Chicken or Egg", layout="centered")
 
 # --- 2. ADD TEXT/MARKDOWN ---
 # Streamlit allows you to write Markdown directly.
-st.title("🐣 Egg today or chicken tomorrow?")
+st.title("🐣 An egg today or a chicken tomorrow?")
 st.markdown("""There is an Italian saying: *"Better an egg today than a chicken tomorrow."* 
 It sounds conservative, but in finance, having the "egg" (capital) today is actually powerful.
 

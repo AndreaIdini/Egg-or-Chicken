@@ -1,16 +1,37 @@
 import streamlit as st
 
+# --- 1. SETUP PAGE CONFIG ---
 st.set_page_config(page_title="The Financial Sandbox", layout="centered")
 
-st.title("📊 The Financial Sandbox")
+# --- 2. DEFINE PAGES ---
+# We wrap the python files in st.Page objects
+# 'url_path' allows you to set the deep link (e.g. /fees instead of /fees_logic)
 
-st.markdown("""
-Welcome! This is the interactive companion to my [**Substack Blog**](https://idini.substack.com).
+intro_page = st.Page("pages/intro_page.py", title="Homepage", icon="🏠", default=True)
 
-Here you will find interactive simulations useful to understand finance. You can go to [the blog](https://idini.substack.com) for explanation and context.
-Select a tool from the sidebar 👈 to get started.
+# Section: Basics
+egg_page = st.Page("pages/01_Egg_or_Chicken.py", title="Egg vs Chicken", icon="🐣", url_path="tvm")
+fee_page = st.Page("pages/02_Fees_keep_you_poor.py", title="Fees keep you poor", icon="💸", url_path="fees")
 
-### Latest Tools:
-*   [**Egg or Chicken**](/Egg_or_Chicken): Visualize the Time Value of Money.
-*   [**Fees keep you poor**](/Fees_keep_you_poor): See how 1% fees destroy your retirement.
-""")
+# Section: Advanced
+# fee_page = st.Page("tools/fees_logic.py", title="Impact of Fees", icon="📉", url_path="fees")
+# mc_page  = st.Page("tools/monte_carlo.py", title="Monte Carlo Sim", icon="🎲", url_path="monte-carlo")
+
+# --- 3. CREATE NAVIGATION (SUBSECTIONS) ---
+# This dictionary structure creates the "Grouping" in the sidebar
+pg = st.navigation({
+    "Welcome": [intro_page],
+    "The Basics": [egg_page, fee_page] #,
+    # "Advanced Modeling": [fee_page, mc_page]
+})
+
+# --- 4. SHARED SIDEBAR ELEMENTS ---
+# Anything you write here will appear on EVERY page
+st.sidebar.text("Made by Andrea Idini")
+# st.logo("assets/logo.png") # Adds a nice image at the top left
+
+# Optional: Add a "Subscribe" link for your Substack
+st.sidebar.link_button("Subscribe to Substack", "https://idini.substack.com")
+
+# --- 5. RUN THE SELECTED PAGE ---
+pg.run()
