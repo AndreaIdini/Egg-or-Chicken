@@ -14,7 +14,6 @@ egg_page = st.Page("pages/01_Egg_or_Chicken.py", title="Egg vs Chicken", icon="�
 fee_page = st.Page("pages/02_Fees_keep_you_poor.py", title="Fees keep you poor", icon="💸", url_path="fees")
 
 # Section: Advanced
-# fee_page = st.Page("tools/fees_logic.py", title="Impact of Fees", icon="📉", url_path="fees")
 # mc_page  = st.Page("tools/monte_carlo.py", title="Monte Carlo Sim", icon="🎲", url_path="monte-carlo")
 
 # --- 3. CREATE NAVIGATION (SUBSECTIONS) ---

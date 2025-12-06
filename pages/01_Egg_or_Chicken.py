@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
+
+from utils import calculate_compound_interest, calculate_breakeven_year
 
 # --- 1. SETUP THE PAGE ---
 # This configures the browser tab title and layout if standalone
@@ -40,9 +41,9 @@ with col3:
     chicken_amount = st.number_input("Final Amount (Chicken)", value=10.0, step=1.0)
 
 year_range = list(range(101))
-invested_values = [initial_amount * ((1 + investment_rate/100)**i) for i in year_range]
+invested_values = calculate_compound_interest(initial_amount, investment_rate, year_range)
 
-breakeven_year = np.log(chicken_amount / initial_amount) / np.log(1 + investment_rate/100)
+breakeven_year = calculate_breakeven_year(chicken_amount, initial_amount, investment_rate)
 
 if breakeven_year > 100:
     st.warning(f"⚠️ Your egg will pay for the chicken only in {breakeven_year:,.1f} years.")
@@ -99,8 +100,7 @@ with col3:
 year_range = list(range(years + 1))
 
 # Calculate the value for each year
-# We use a list comprehension, but you could use numpy arrays too
-adjusted_values = [initial_amount / ((1 + inflation_rate/100)**i) for i in year_range]
+adjusted_values = initial_amount / calculate_compound_interest(1, inflation_rate, year_range)
 
 # Create a Pandas DataFrame (The standard format for data plotting)
 df = pd.DataFrame({
