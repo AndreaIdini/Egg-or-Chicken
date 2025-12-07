@@ -11,7 +11,7 @@ intro_page = st.Page("tools/intro_page.py", title="Homepage", icon="🏠", defau
 
 # # Section: Basics
 egg_page = st.Page("tools/01_Egg_or_Chicken.py", title="Egg vs Chicken", icon="🐣", url_path="tvm")
-# fee_page = st.Page("tools/02_Fees_keep_you_poor.py", title="Fees keep you poor", icon="💸", url_path="fees")
+fee_page = st.Page("tools/02_Fees_keep_you_poor.py", title="Fees keep you poor", icon="💸", url_path="fees")
 
 # Section: Advanced
 # mc_page  = st.Page("tools/monte_carlo.py", title="Monte Carlo Sim", icon="🎲", url_path="monte-carlo")
@@ -20,7 +20,7 @@ egg_page = st.Page("tools/01_Egg_or_Chicken.py", title="Egg vs Chicken", icon="�
 # This dictionary structure creates the "Grouping" in the sidebar
 pg = st.navigation({
     "Welcome": [intro_page],
-    "The Basics": [egg_page] #, fee_page] #,
+    "The Basics": [egg_page, fee_page] #,
     # "Advanced Modeling": [fee_page, mc_page]
 })
 
