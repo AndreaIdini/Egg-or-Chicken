@@ -1,8 +1,10 @@
 import streamlit as st
-st.write("Hello World")
 
 # --- 1. SETUP PAGE CONFIG ---
-# st.set_page_config(page_title="The Financial Sandbox", layout="centered")
+st.set_page_config(page_title="The Financial Sandbox", layout="centered")
+
+st.write("Hello World")
+
 
 # --- 2. DEFINE PAGES ---
 # We wrap the python files in st.Page objects
