@@ -27,11 +27,11 @@ st.write("Hello World")
 
 # --- 4. SHARED SIDEBAR ELEMENTS ---
 # Anything you write here will appear on EVERY page
-st.sidebar.text("Made by Andrea Idini")
-# st.logo("assets/logo.png") # Adds a nice image at the top left
+# st.sidebar.text("Made by Andrea Idini")
+# # st.logo("assets/logo.png") # Adds a nice image at the top left
 
-# Optional: Add a "Subscribe" link for your Substack
-st.sidebar.link_button("Subscribe to Substack", "https://idini.substack.com")
+# # Optional: Add a "Subscribe" link for your Substack
+# st.sidebar.link_button("Subscribe to Substack", "https://idini.substack.com")
 
-# --- 5. RUN THE SELECTED PAGE ---
-pg.run()
+# # --- 5. RUN THE SELECTED PAGE ---
+# pg.run()
