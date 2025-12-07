@@ -9,15 +9,15 @@ from utils import calculate_compound_interest
 st.title("Fees keep you poor")
 st.subheader("...and the banker rich 💸")
 
-st.markdown("""Imagine a business partner who puts up $0 capital, takes 0% of the risk, but demands a cut every year that enormously draw down. This is what happens when you pay investment fees. 
+st.markdown("""Imagine a business partner who puts up $0 capital, takes 0% of the risk, but demands a massive cut of the business every single year. This is the reality of investment fees. 
             
-## 1. Yearly management fees
+## 1. The leech: yearly fees.
 
-This is the most important and insidious since it erodes your capital slowing down the snowball effect of compound interest. Yearly management fees are applied yearly as a percentage of investment. A seemingly small difference between two options can have a devastating impact by the time you retire.
+This is the most insidious fee because it acts like reverse compounding. It doesn't just reduce your return; it shrinks the capital base that generates future returns.
 
-Once again, the counterintuitive nature of exponentials makes it hard to realise what is really going on. Even if fees are at a relative small percentage of your returns, their compound effect can become huge with time. At an average return of 7% per year, a not unusual 2% fee means that in 30 years you will have given away half of your investment gains to the bank. And in 75 years the bank will have earned more than 3 times as you! You can see what a huge difference it makes to go with a 0.2% fee index fund instead of a mutual fund.
+Once again, the counterintuitive nature of exponentials makes it hard to realise what is really going on. Even if fees are at a relative small percentage of your returns, their compound effect can become huge with time. At an average return of 7% per year, a not unusual 2% fee means that in 30 years you will have given away half of your investment gains, and in 75 years the bank will have earned more than 3 times as you! 
             
-Below you can simulate different scenarios by changing the parameters.
+With the simluation below you can adjust parameters to see what a huge difference it makes to go with a 0.2% fee index fund instead of a 2% mutual fund.
 """)
 
 # We create columns to organize the inputs neatly side-by-side
@@ -59,14 +59,16 @@ st.line_chart(Fees_dataframe, x="Year", y=["Investment", "Investment with fees"]
 
 st.markdown(""" ### Takeaway message:
 
-Slowing down the accumulation of compound interest through fees is the single most effective way to reduce your final wealth. This is extra worse for low yield investments, like bonds where your yield can be annhilated. Always prefer low-cost index funds over actively managed funds with high fees. Over time, the difference will be staggering!""")
+High fees are the most effective way to destroy wealth. This is especially deadly for low-yield investments (like bonds), where fees can eat the entire return. Always prefer low-cost index funds.
+""")
 
 st.divider()
 
 st.markdown("""
 ## 2. Transaction and currency costs
 
-There are also fees a bunch that are applied when you buy or sell an asset. They can be a percentage of the transaction or a fixed cost per trade. When it comes to names, the fantasy of bankers is infinite. Transaction fees, courtage, currency conversion fees, and more names are used for what is substantially just a one-time fee. They work either on a percentage or a fixed amount basis, and all of them follow the more intuitive definition of removing a given fraction of the investment, and thus reducing the wealth down the line of that same fraction.
+"Courtage," "Spreads," "Conversion Fees"—bankers have infinite names for the same thing: taking a slice every time money moves.
+These fees punish activity. If you buy and sell frequently, you pay the toll booth both ways. Even small costs compound negatively because that money is gone forever and can no longer grow.
 
 While they may seem small they can add up over time, especially if you trade frequently. Below you can set your expected trading frequency and the associated costs.
             
@@ -95,10 +97,11 @@ st.info(f"You invested {initial_amount:,.1f} and in {years} years you earned {in
 daily_trader = calculate_compound_interest(initial_amount-2*fees_charged, investment_rate/252, 1)
 
 if daily_trader < initial_amount:
-    st.warning(f"⚠️ If you were to buy and sell this quantity in a single day, with this fee, after the first day you would have on average {daily_trader:.1f} which is less than the starting capital, so you would go bust in not so many days.")
+    st.warning(f"⚠️ If you were to trade this amount daily with these fees, your capital would vanish mathematically. You would go bankrupt simply from friction costs.")
 
 st.markdown("""### Takeaway message:
-Transaction, currency conversion and all these other fees can be just a few euros/dollars/pounds, but over time the loss of not having invested those few bucks will be much larger (this is also true for that double mocha frappuccino). The *time value* of a few bucks is significant! These costs can add up over time, especially if you trade frequently.""")
+            
+Transaction, currency conversion and all these other fees can be just a few euros/dollars/pounds, but over time the loss of not having invested those few bucks will be much larger. You did not just spend 10$, but you killed the 100$ they would have become. The *time value* of a few bucks is significant! Be extra careful if you trade frequently.""")
 
 st.divider()
 
@@ -154,10 +157,9 @@ In the real world, performance fees are even worse, because the markets and hedg
 
 st.markdown("""## 4. The cost of doing business
             
-If we consider all of the above fees together, it is easy to see how much of your investment returns are eaten up by fees. Let's see a typical case of a monthly saver and the difference from the ideal cost of the [**Egg or Chicken**](/tvm) example.
+If we consider all of the above fees together, it is easy to see how much of your investment returns are eaten up by fees. Let's see a typical case of a worker that saves yearly towards retirement. When considering fees, what is the difference from the ideal cost of the [**Egg or Chicken**](/tvm) example?
             
-Below you can set your expected yearly savings, investment yield, retirement spending, that are inflation adjusted. You can set 
-other parameters like life duration, wealth tax, and performance fees in the settings.
+All the values you can set below are in *Real* terms, i.e. inflation adjusted. You can set other parameters in the settings.
 """)
 
 
@@ -238,8 +240,12 @@ for i in range(1, years):
     invested.append( (invested[-1]+default_data["Contribution"][i-1]) * (1 + default_data["Investment Rate (%)"][i-1]/100))
 
 invested_with_fees = [0]
+wealth_taxable = (1 if invested_with_fees[-1] > wealth_tax_threshold else 0)
+
 for i in range(1, years):
-    invested_with_fees.append( (invested_with_fees[-1]+default_data["Contribution"][i-1]*(1-transaction_fees/100)) * (1 + default_data["Investment Rate (%)"][i-1]/100 - yearly_fees/100 - performance_fees/100 * max(0, default_data["Investment Rate (%)"][i-1]-benchmark)/100 ))
+    contribution = default_data["Contribution"][i-1]
+    contribution = contribution *(1-transaction_fees/100 * (1 if contribution > 0 else -1) ) # apply transaction fees with the correct sign when withdrawing
+    invested_with_fees.append( (invested_with_fees[-1] + contribution ) * (1 + default_data["Investment Rate (%)"][i-1]/100 - yearly_fees/100 - performance_fees/100 * max(0, default_data["Investment Rate (%)"][i-1]-benchmark)/100 - wealth_tax/100 * wealth_taxable) )
 
 
 if min(invested_with_fees) < 0:
@@ -252,8 +258,27 @@ if min(invested_with_fees) < 0:
 else:
     st.success("🎉 Success: Your investments last through retirement!")
 
+st.metric(
+    label=f"Wealth at the end of retirement, and how much has been lost to fees", 
+    value=f"{invested_with_fees[-1]:,.1f}", 
+    delta=f"{invested_with_fees[-1] - invested[-1]:,.2f}",
+    delta_color="normal" # Makes the negative change red
+)
+
+
 default_data["Investment without Fees"] = invested
 default_data["Investment with Fees"] = invested_with_fees
 
 
 st.line_chart(default_data[:years], x="Year", y=["Investment without Fees","Investment with Fees"], x_label="Years of investing", y_label="Investment Value Over Life")
+
+st.markdown("""### 📝  Final thoughts
+Yearly fees are the silent killer of your investments. Even seemingly small fees can have a huge impact over time due to the power of compound interest. While in a no-fees scenario you might be able to retire comfortably and even accumulate such wealth to be able to retire early and live off passive income without eroding your wealth, even just 2% yearly fees might make it impossible to retire! Over a lifetime, every fraction of a percent makes up for a Ferrari that your advisor gets instead of you!
+            
+Transaction fees are less impactful on the long term for a disciplined buy-and-hold investor, but they can add up if you trade frequently. 
+            
+Always be aware of the fees you are paying and try to minimize them as much as possible. Low-cost index funds are often a better choice than actively managed funds precisely because of the high fees. Over time, the difference can be staggering! 
+            
+In finance you get what you *don't* pay for. Unless you have a good reason, always go for investment options with lower fees.
+""")
+
