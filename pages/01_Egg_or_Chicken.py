@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-from utils import calculate_compound_interest, calculate_breakeven_year
+from utils import calculate_compound_interest, calculate_breakeven_year, calculate_constant_investment
 
 # --- 1. SETUP THE PAGE ---
 # This configures the browser tab title and layout if standalone
@@ -158,14 +158,9 @@ with col4:
 
 year_range = list(range(41))
 
-invested_job1 = [0]
-invested_job2 = [0]
-for i in year_range[1:]:
-    invested_job1.append( (invested_job1[-1]+job1_savings) * (1 + investment_rate/100))
-    if i <= years_delay:
-        invested_job2.append(0)
-    else:
-        invested_job2.append((invested_job2[-1] + job2_savings) * (1 + investment_rate/100))
+invested_job1 = calculate_constant_investment(job1_savings, investment_rate, 40)
+invested_job2 = [0]*years_delay
+invested_job2 = invested_job2 + calculate_constant_investment(job2_savings, investment_rate, 40-years_delay)
 
 jobs_comparison = pd.DataFrame({
     "Year": year_range,
@@ -202,7 +197,7 @@ with col2:
     investment_rate = st.number_input("Yearly Investment Yield (%).", value=5.0, step=0.1)
 
 with col3:
-    retirement_spending = st.number_input("Yearly Spending (real value).", value=5000, step=100)
+    retirement_spending = st.number_input("Retirement spending (real value).", value=5000, step=100)
 
 col1, col2 = st.columns(2)
 with col1:
@@ -273,7 +268,6 @@ st.markdown(""" ### 📝 Final Thoughts
 
 **Disclaimer:** these models are simplified and, among other things, do not account for taxes, fees, or changing market conditions. Future performance might be radically different from the past and hence the numbers we are using might not be representative. I have used for the examples typical numbers considered in inflation-adjusted scenarios (otherwise also salary should grow with inflation). But it is easy to play with the numbers to simulate inflation and variability in returns, the effect of promotions, and a draw a lot of interesting conclusions from this simple model. See what happens if you have a market crash at the beginning or at the end of your investing life.
 """)
-st.info("If you want to learn more, and you liked this app, contact me and ask to make more! :)")
 
 st.divider()
 

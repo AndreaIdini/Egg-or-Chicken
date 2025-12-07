@@ -16,4 +16,7 @@ Select a lecture from the sidebar 👈 to get started.
 ### Latest Tools:
 *   [**Egg or Chicken**](/tvm): Visualize the Time Value of Money.
 *   [**Fees keep you poor**](/fees): See how 1% fees destroy your retirement.
+            
 """)
+
+st.info("If you want to learn more, and you liked this app, contact me and ask to make more! :)")
