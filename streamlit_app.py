@@ -7,11 +7,11 @@ st.set_page_config(page_title="The Financial Sandbox", layout="centered")
 # We wrap the python files in st.Page objects
 # 'url_path' allows you to set the deep link (e.g. /fees instead of /fees_logic)
 
-intro_page = st.Page("pages/intro_page.py", title="Homepage", icon="🏠", default=True)
+intro_page = st.Page("tools/intro_page.py", title="Homepage", icon="🏠", default=True)
 
 # Section: Basics
-egg_page = st.Page("pages/01_Egg_or_Chicken.py", title="Egg vs Chicken", icon="🐣", url_path="tvm")
-fee_page = st.Page("pages/02_Fees_keep_you_poor.py", title="Fees keep you poor", icon="💸", url_path="fees")
+egg_page = st.Page("tools/01_Egg_or_Chicken.py", title="Egg vs Chicken", icon="🐣", url_path="tvm")
+fee_page = st.Page("tools/02_Fees_keep_you_poor.py", title="Fees keep you poor", icon="💸", url_path="fees")
 
 # Section: Advanced
 # mc_page  = st.Page("tools/monte_carlo.py", title="Monte Carlo Sim", icon="🎲", url_path="monte-carlo")
