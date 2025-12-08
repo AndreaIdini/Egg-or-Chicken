@@ -10,14 +10,16 @@ st.title("Fees keep you poor")
 st.subheader("...and the banker rich 💸")
 
 st.markdown("""Imagine a business partner who puts up $0 capital, takes 0% of the risk, but demands a massive cut of the business every single year. This is the reality of investment fees. 
-            
-## 1. The leech: yearly fees.
+
+> If you want to read more about this, check out my [Substack article on the Ferrari in your Banker's driveway](https://idini.substack.com/publish/post/181027330).
+          
+## 1. The drag: yearly fees.
 
 This is the most insidious fee because it acts like reverse compounding. It doesn't just reduce your return; it shrinks the capital base that generates future returns.
 
 Once again, the counterintuitive nature of exponentials makes it hard to realise what is really going on. Even if fees are at a relative small percentage of your returns, their compound effect can become huge with time. At an average return of 7% per year, a not unusual 2% fee means that in 30 years you will have given away half of your investment gains, and in 75 years the bank will have earned more than 3 times as you! 
             
-With the simluation below you can adjust parameters to see what a huge difference it makes to go with a 0.2% fee index fund instead of a 2% mutual fund.
+With the simulation below you can adjust parameters to see what a huge difference it makes to go with a 0.2% fee index fund instead of a 2% mutual fund.
 """)
 
 # We create columns to organize the inputs neatly side-by-side
@@ -52,7 +54,7 @@ Fees_dataframe = pd.DataFrame({
 
 st.subheader("Investment value over time")
 
-st.success(f"🎉 Your earned {(invested_fees_values[-1]-initial_amount):.1f} in {years} years.")
+st.success(f"🎉 You earned {(invested_fees_values[-1]-initial_amount):.1f} in {years} years.")
 st.warning(f"😞 Your bank earned {invested_values[-1]-invested_fees_values[-1]:,.1f} thanks to you.")
 
 st.line_chart(Fees_dataframe, x="Year", y=["Investment", "Investment with fees"], x_label="Year", y_label="Investment value", color=["#32CD32", "#FF4B4B"])
@@ -65,7 +67,7 @@ High fees are the most effective way to destroy wealth. This is especially deadl
 st.divider()
 
 st.markdown("""
-## 2. Transaction and currency costs
+## 2. The cut: Transaction costs
 
 "Courtage," "Spreads," "Conversion Fees"—bankers have infinite names for the same thing: taking a slice every time money moves.
 These fees punish activity. If you buy and sell frequently, you pay the toll booth both ways. Even small costs compound negatively because that money is gone forever and can no longer grow.
@@ -101,12 +103,12 @@ if daily_trader < initial_amount:
 
 st.markdown("""### Takeaway message:
             
-Transaction, currency conversion and all these other fees can be just a few euros/dollars/pounds, but over time the loss of not having invested those few bucks will be much larger. You did not just spend 10$, but you killed the 100$ they would have become. The *time value* of a few bucks is significant! Be extra careful if you trade frequently.""")
+Transaction, currency conversion and all these other fees can be just a few euros/dollars/pounds, but over time the loss of not having invested those few bucks will be much larger. You did not just spend 10$, you killed the 100$ they would have become. The *time value* of a few bucks is significant! Be extra careful if you trade frequently.""")
 
 st.divider()
 
 st.markdown("""
-## 3. Performance fees
+## 3. The house: Performance fees
 
 Heads I win, tails you lose. Performance fees are charged only when the investment does well, typically as a percentage of the profits above a certain benchmark. While this may seem fair, it is an additional drawdown on your returns. This is used mostly by hedge funds and some mutual funds. A common structure is "2 and 20", meaning a 2% management fee plus 20% of the profits above some benchmark.
             
@@ -147,7 +149,7 @@ hedge_dataframe = pd.DataFrame({
 st.subheader("Investment value over time")
 
 st.success(f"🎉 Your earned {(invested_fees_values[-1]-initial_amount):.1f} in {years} years.")
-st.warning(f"😞 Your heddge fund earned {invested_values[-1]-invested_hedge[-1]:,.1f} thanks to you.")
+st.warning(f"😞 Your hedge fund earned {invested_values[-1]-invested_hedge[-1]:,.1f} thanks to you.")
 
 st.line_chart(hedge_dataframe, x="Year", y=["Investment", "Investment with fees", "Investment with hedge fund fees"], x_label="Year", y_label="Investment value", color=["#32CD32", "#FF4B4B", "#FFA500"])
 
@@ -282,3 +284,4 @@ Always be aware of the fees you are paying and try to minimize them as much as p
 In finance you get what you *don't* pay for. Unless you have a good reason, always go for investment options with lower fees.
 """)
 
+st.info("If you want to read more about this, check out my [Substack article on the Ferrari in your Banker's driveway](https://idini.substack.com/publish/post/181027330).")
