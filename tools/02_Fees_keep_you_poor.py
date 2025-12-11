@@ -267,12 +267,11 @@ st.metric(
     delta_color="normal" # Makes the negative change red
 )
 
-
-default_data["Investment without Fees"] = invested
 default_data["Investment with Fees"] = invested_with_fees
+default_data["Investment without Fees"] = invested
 
 
-st.line_chart(default_data[:years], x="Year", y=["Investment without Fees","Investment with Fees"], x_label="Years of investing", y_label="Investment Value Over Life")
+st.line_chart(default_data[:years], x="Year", y=["Investment without Fees","Investment with Fees"], x_label="Years of investing", y_label="Investment Value Over Life", color=["#FF4B4B", "#32CD32"])
 
 st.markdown("""### 📝  Final thoughts
 Yearly fees are the silent killer of your investments. Even seemingly small fees can have a huge impact over time due to the power of compound interest. While in a no-fees scenario you might be able to retire comfortably and even accumulate such wealth to be able to retire early and live off passive income without eroding your wealth, even just 2% yearly fees might make it impossible to retire! Over a lifetime, every fraction of a percent makes up for a Ferrari that your advisor gets instead of you!
