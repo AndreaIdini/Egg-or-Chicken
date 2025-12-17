@@ -11,7 +11,7 @@ st.subheader("...and the banker rich 💸")
 
 st.markdown("""Imagine a business partner who puts up $0 capital, takes 0% of the risk, but demands a massive cut of the business every single year. This is the reality of investment fees. 
 
-> If you want to read more about this, check out my [Substack article on the Ferrari in your Banker's driveway](https://idini.substack.com/publish/post/181027330).
+> If you want to have a bit more guidance to understand these results, check out my [Substack article on the Ferrari in your Banker's driveway](https://idini.substack.com/publish/post/181027330).
           
 ## 1. The drag: yearly fees.
 

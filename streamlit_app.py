@@ -15,8 +15,9 @@ fee_page = st.Page("tools/02_Fees_keep_you_poor.py", title="Fees keep you poor",
 risk_page = st.Page("tools/03_Risk_and_Reward.py", title="Risk and Reward", icon="⚖️", url_path="risk")
 
 # Section: Practical
-Rent_page = st.Page("tools/11_Rent_vs_Buy.py", title="Rent vs Buy", icon="🏡", url_path="rent-buy")
-Equity_page = st.Page("tools/12_Equity_vs_Debt.py", title="Equity vs Debt", icon="📈", url_path="equity")
+rent_page = st.Page("tools/11_Rent_vs_Buy.py", title="Rent vs Buy", icon="🏡", url_path="rent-buy")
+equity_page = st.Page("tools/12_Equity_vs_Debt.py", title="Equity vs Debt", icon="📈", url_path="equity")
+lump_page = st.Page("tools/13_Lump_Sum_vs_Annuity.py", title="Lump Sum vs Annuity", icon="💰", url_path="lump-sum")
 
 # Section: Math
 probability_page = st.Page("tools/21_Probability_Theory.py", title="Probability Theory", icon="🎲", url_path="probability")
@@ -32,7 +33,7 @@ portfolio_page = st.Page("tools/32_Portfolio_Theory.py", title="Portfolio Optimi
 pg = st.navigation({
     "Welcome": [intro_page],
     "The Basics": [egg_page, fee_page, risk_page],
-    "The practical": [Rent_page, Equity_page],
+    "The practical": [rent_page, equity_page, lump_page],
     "Mathematical Foundations": [probability_page],
     "Financial Modeling": [volatility_page, portfolio_page]
 })
