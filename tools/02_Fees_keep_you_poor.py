@@ -11,7 +11,7 @@ st.subheader("...and the banker rich 💸")
 
 st.markdown("""Imagine a business partner who puts up $0 capital, takes 0% of the risk, but demands a massive cut of the business every single year. This is the reality of investment fees. 
 
-> If you want to have a bit more guidance to understand these results, check out my [Substack article on the Ferrari in your Banker's driveway](https://idini.substack.com/publish/post/181027330).
+> If you want to have a bit more guidance to understand these results, check out my [Substack article on the Ferrari in your Banker's driveway](https://open.substack.com/pub/idini/p/the-ferrari-in-your-bankers-driveway?r=1rbb68).
           
 ## 1. The drag: yearly fees.
 
@@ -283,4 +283,4 @@ Always be aware of the fees you are paying and try to minimize them as much as p
 In finance you get what you *don't* pay for. Unless you have a good reason, always go for investment options with lower fees.
 """)
 
-st.info("If you want to read more about this, check out my [Substack article on the Ferrari in your Banker's driveway](https://idini.substack.com/publish/post/181027330).")
+st.info("If you want to read more about this, check out my [Substack article on the Ferrari in your Banker's driveway](https://open.substack.com/pub/idini/p/the-ferrari-in-your-bankers-driveway?r=1rbb68).")

@@ -10,10 +10,11 @@ An interactive web application built with **Python** and **Streamlit** to visual
 
 *   **Python:** Core logic and numerical calculations.
 *   **Streamlit:** Web framework for the frontend UI.
-*   **Pandas:** Data manipulation and time-series generation.
-*   **NumPy:** Mathematics.
 *   **Altair/Vega-Lite:** Native Streamlit charting.
 
+*   **Pandas** 
+*   **NumPy** 
+*   **Plotly:** it is used on page 03 for better graphs
 ## 🚀 How to Run Locally
 
 If you want to run this code on your own machine, follow these steps:
@@ -37,5 +38,5 @@ pip install -r requirements.txt
 streamlit run app.py
 
 ## 📄 License
-If anyone wonders if they can use this 5 minutes project, it is open source and available under the MIT License.
+If anyone wonders if they can use this little minutes project, the code is open source and available under the MIT License. Please acknowledge and don't plagiarize the text though.
 

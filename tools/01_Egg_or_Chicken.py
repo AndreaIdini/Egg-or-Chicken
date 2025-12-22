@@ -17,7 +17,7 @@ Why? *Because money has potential.*
 
 An amount held today can be invested to generate returns. Waiting for a larger amount in the future comes at a cost: you lose the years of compounding interest. This is the core principle of the **Time Value of Money**.
 
-> If you want to read more about this, check out my [Substack article on The Mathematics of Impatience](https://idini.substack.com/publish/post/180276328).
+> If you want to read more about this, check out my [Substack article on The Mathematics of Impatience](https://idini.substack.com/p/better-an-egg-today-the-mathematics?r=1rbb68).
             
 ## 1. The Power of Compounding 💹
 Let's test the proverb. If you invest the price of an "egg" today, how long does it take to grow into the price of a "chicken"? 
@@ -271,7 +271,7 @@ st.markdown(""" ### 📝 Final Thoughts
 **Disclaimer:** these models are simplified and, among other things, do not account for taxes, fees, or changing market conditions. Future performance might be radically different from the past and hence the numbers we are using might not be representative. I have used for the examples typical numbers considered in inflation-adjusted scenarios (otherwise also salary should grow with inflation). But it is easy to play with the numbers to simulate inflation and variability in returns, the effect of promotions, and a draw a lot of interesting conclusions from this simple model. See what happens if you have a market crash at the beginning or at the end of your investing life.
 """)
 
-st.info("If you want to read more about this, check out my [Substack article on A Life Well Spent](https://idini.substack.com/publish/post/182042634).")
+st.info("If you want to read more about this, check out my [Substack article on A Life Well Spent](https://idini.substack.com/p/better-an-egg-today-the-mathematics?r=1rbb68).")
 
 st.divider()
 

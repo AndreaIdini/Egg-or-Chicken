@@ -21,9 +21,9 @@ Most people confuse the two. They cannot be more different.
 
 **Volatility is the price of admission for high returns.**
 
-> If you want some more guidance when looking at these simulation results, check out my [Substack article](https://idini.substack.com/publish/post/181046998).
+> If you want some more guidance when looking at these simulation results, check out my [Substack article](https://open.substack.com/pub/idini/p/the-price-of-wealth-jitters?r=1rbb68).
             
-1. The Rollercoaster (Volatility) 🎢
+## 1. The Rollercoaster (Volatility) 🎢
 
 Volatility is a measure of emotional pain. It measures how wildly the price swings.
 A bank account has 0% volatility (the number never wiggles and the price is exact). The stock market has high volatility (it wiggles a lot famously unpredictably).
@@ -230,6 +230,15 @@ with col1:
         opacity=0.8,
         template="simple_white" # Clean look
     )
+    fig.update_layout(
+        legend=dict(
+            yanchor="top",
+            y=0.99,           # 99% from the bottom (top)
+            xanchor="right",
+            x=0.99,           # 1% from the left
+            bgcolor="rgba(255, 255, 255, 0.5)" # Optional: semi-transparent background
+        )
+    )
 
     # This forces the bars to have a thin white gap (looks more professional)
     fig.update_traces(marker_line_width=1.5, marker_line_color="white")
@@ -273,6 +282,15 @@ with col2:
         opacity=0.8,
         template="simple_white" # Clean look
     )
+    fig.update_layout(
+        legend=dict(
+            yanchor="top",
+            y=0.99,           # 99% from the bottom (top)
+            xanchor="right",
+            x=0.99,           # 1% from the left
+            bgcolor="rgba(255, 255, 255, 0.5)" # Optional: semi-transparent background
+        )
+    )
 
     # This forces the bars to have a thin white gap 
     fig.update_traces(marker_line_width=1.5, marker_line_color="white")
@@ -315,7 +333,7 @@ with st.form("Retirement Simulation with volatility"):
         investment_volatility = st.number_input("Investment Volatility (%/month).", value=2.0, step=0.1)
 
     with col3:
-        risk_free_rate = st.number_input("Risk-free rate (%).", value=3.0, step=0.1)
+        rf_rate = st.number_input("Risk-free rate (%).", value=3.0, step=0.1)
 
     with st.expander("⚙️ Settings"):
         opt_col1, opt_col2 = st.columns(2)
@@ -341,7 +359,7 @@ years = years_work + years_retirement
 
 year_range = list(range(12*years+1))
 investment_rate = compounding_frequency_adjusted(investment_rate, 12)
-risk_free_rate = compounding_frequency_adjusted(risk_free_rate, 12)
+rf_rate = compounding_frequency_adjusted(rf_rate, 12)
 
 @st.cache_data
 def run_montecarlo_delta(n_sims, time, volatility, rate):
@@ -396,7 +414,7 @@ default_data["Upper Bound"] = upper_bound
 
 invested_rf = [0]
 for i in range(1, 12*years):
-    invested_rf.append( (invested_rf[-1]+default_data["Contribution"][i-1]) * (1 + risk_free_rate/100))
+    invested_rf.append( (invested_rf[-1]+default_data["Contribution"][i-1]) * (1 + rf_rate/100))
 
 default_data["Risk-Free Investment"] = invested_rf
 
@@ -473,6 +491,17 @@ fig.update_layout(
     hovermode="x unified" # Shows all values when hovering over a specific year
 )
 
+fig.update_layout(
+    legend=dict(
+        yanchor="top",
+        y=0.99,           # 99% from the bottom (top)
+        xanchor="left",
+        x=0.01,           # 1% from the left
+        bgcolor="rgba(255, 255, 255, 0.5)" # Optional: semi-transparent background
+    )
+)
+
+
 st.write(f"""
 ### 📊  Simulation Results
 - After {years_work} years of work and {years_retirement} years of retirement, you saved {total_contributions/1000.:.0f} thousands and spent {retirement_spending*years_retirement/1000.:.0f} thousands in real currency value (inflation adjusted).""")
@@ -494,4 +523,4 @@ st.markdown("""### 📝  Final thoughts
 - *The solution:* A diversified portfolio (to eliminate Default Risk), held for a long time (to tame Volatility Risk), purchased monthly (to profit from the dips).
 """)
 
-st.info("If you want to read more about this, check out my [Substack article](https://idini.substack.com/publish/post/181046998).")
+st.info("If you want to read more about this, check out my [Substack article](https://open.substack.com/pub/idini/p/the-price-of-wealth-jitters?r=1rbb68).")
