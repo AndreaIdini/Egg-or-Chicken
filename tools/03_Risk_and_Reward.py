@@ -30,12 +30,12 @@ A bank account has 0% volatility (the number never wiggles and the price is exac
 
 Here is the cruel math of volatility: If an asset drops 50%, you need a 100% gain just to get back to even.
 If volatility is too high, this "drag" pulls your long-term returns down, even if the average return looks good on paper. 
-
-For the mathematically inclined, you can look at [the page about volatility](/volatility) for definition and how did I model it in these simulations.
-            
-Depending of conditions, the market has a typical volatility of 1 to 2% per month. Try to run several simulations and see how different degree of volatility affects the final value at short and long time horizons.
 """)
-
+st.page_link("tools/31_Volatility_Explained.py", label="For the mathematically inclined, you can look at the volatility page for more information", icon="📊")
+st.markdown("""
+Depending of conditions, the market has a typical volatility of 1 to 2% per month. Try to run several simulations and see how different degree of volatility affects the final value at short and long time horizons.
+"""
+)
 col1, col2 = st.columns(2)
 
 with col1:

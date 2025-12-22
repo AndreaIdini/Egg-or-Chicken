@@ -14,11 +14,11 @@ You can go to [the blog](https://idini.substack.com) for more details and contex
 Select a lecture from the sidebar 👈 to get started.
 
 ### Latest Tools:
-*   [**Egg or Chicken**](/tvm): Visualize the Time Value of Money.
-*   [**Fees keep you poor**](/fees): See how 1% fees destroy your retirement.
-*   [**Risk and Reward**](/risk): Learn to be courageous with your investments.
 """)
+st.page_link("tools/01_Egg_or_Chicken.py", label="Egg or Chicken: Visualize the Time Value of Money", icon="📊")
+st.page_link("tools/02_Fees_keep_you_poor.py", label="Fees keep you poor: See how 1% can destroy your retirement.", icon="💸")
+st.page_link("tools/03_Risk_and_Reward.py", label="Risk and Reward: Learn to be courageous with your investments", icon="⚖️")
 
-st.info("""If you want to learn more, and you liked this app, contact me and ask to make more! :)
+st.info("""If you want to learn more, and you liked this app contact me, follow me on my substack, and ask to make more! :)
 
 Write me at andrea.idini (at) gmail.com if you want to thank me for this project or if you have an idea!""")
